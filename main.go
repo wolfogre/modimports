@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"reflect"
 	"strings"
+	"unicode"
 
 	"golang.org/x/mod/modfile"
 )
@@ -89,7 +90,7 @@ func RemoveImportSpace(file string) error {
 		if inImport && line == ")" {
 			inImport = false
 		}
-		if inImport && line == "" {
+		if inImport && IsSpaceLine(line) {
 			continue
 		}
 		_, err := fmt.Fprintln(writer, line)
@@ -102,4 +103,13 @@ func RemoveImportSpace(file string) error {
 		return ioutil.WriteFile(file, writer.Bytes(), 0644)
 	}
 	return nil
+}
+
+func IsSpaceLine(line string) bool {
+	for _, c := range line {
+		if !unicode.IsSpace(c) {
+			return false
+		}
+	}
+	return true
 }
