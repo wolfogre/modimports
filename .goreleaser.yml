@@ -21,7 +21,7 @@ changelog:
     - '^test:'
 brews:
   -
-    github:
+    tap:
      owner: wolfogre
      name: homebrew-tap
     folder: Formula
@@ -29,6 +29,6 @@ brews:
     description: "Wrapper for goimports."
     skip_upload: false
     dependencies:
-     - wolfogre/tap/goimports
+     - gotools
     test: system "#{bin}/modimports /dev/null"
     install: bin.install "modimports"
