@@ -26,9 +26,8 @@ brews:
      name: homebrew-tap
     folder: Formula
     homepage: "https://github.com/wolfogre/modimports"
-    description: "Wrapper for goimports."
-    skip_upload: false
+    description: "Wrapper for goimports"
     dependencies:
-     - gotools
-    test: system "#{bin}/modimports /dev/null"
+     - wolfogre/tap/gotools
+    test: system "#{bin}/modimports", "/dev/null"
     install: bin.install "modimports"
